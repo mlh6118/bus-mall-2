@@ -18,29 +18,57 @@ function renderCart() {
   showCart();
 }
 
-// TODO: Remove all of the rows (tr) in the cart table (tbody)
-function clearCart() {}
+// Done: Remove all of the rows (tr) in the cart table (tbody)
+function clearCart() {
+  document.querySelector('tbody').innerHTML = '';
+}
 
-// TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
+// Done: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
 
-  // TODO: Find the table body
+  // Done: Find the table body
+  let tbodyShowCart = document.querySelector('tbody');
   
+  // Done: Iterate over the items in the cart
+  for(let i = 0; i < cart.items.length; i++){
+  
+    // Done: Create a TR
+    let trShowCart = document.createElement('tr');
 
-  // TODO: Iterate over the items in the cart
-  // TODO: Create a TR
-  // TODO: Create a TD for the delete link, quantity,  and the item
-  // TODO: Add the TR to the TBODY and each of the TD's to the TR
+    // Done: Create a TD for the delete link, quantity,  and the item
+    let tdDeleteLink = document.createElement('td');
+    let tdQuantity = document.createElement('td');
+    let tdItem = document.createElement('td');
+
+    // Add text content.
+    tdDeleteLink.innerHTML = `<button class="${i}">X</button>`;
+    tdQuantity.textContent = cart.items[i].quantity;
+    tdItem.textContent = cart.items[i].product;
+
+    // Append tds to tr.
+    trShowCart.append(tdDeleteLink, tdQuantity, tdItem);
+
+    // Done: Add the TR to the TBODY and each of the TD's to the TR
+    tbodyShowCart.appendChild(trShowCart);
+  }
 
 }
 
 function removeItemFromCart(event) {
 
-  // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
-  // TODO: Save the cart back to local storage
-  // TODO: Re-draw the cart table
+  // Done: When a delete link is clicked, use cart.removeItem to remove the correct item
+  let buttonDeleteLink = event.target.className;
+  cart.removeItem(buttonDeleteLink);
+
+  // Done: Save the cart back to local storage
+  cart.saveToLocalStorage();
+
+  // Done: Re-draw the cart table
+  renderCart();
 
 }
 
 // This will initialize the page and draw the cart on screen
 renderCart();
+
+// table.addEventListener('click', removeItemFromCart);
