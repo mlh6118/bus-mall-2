@@ -52,15 +52,15 @@ function updateCounter() {
   document.getElementById('itemCount').textContent = `${cart.items.length} item(s)`;
 }
 
-// TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
+// Done: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
-  // TODO: Get the item and quantity from the form
-  // Same as above.
-  // TODO: Add a new element to the "cartContents" div on index.html with that information
-  // Need the data in local storage to render to the cart page.
-  // Work on Remove last, work Quantity and Item first.
-  // Get window into the DOM
-  // Create element, give it context, append it to the parent (parent is window into the DOM)
+  // Done: Get the item and quantity from the form
+  let pPreview = document.createElement('p');
+  pPreview.textContent = `Item: ${document.getElementById('items').value} Qty: ${document.getElementById('quantity').value}`;
+
+  // Done: Add a new element to the "cartContents" div on index.html with that information
+  let divCartContents = document.getElementById('cartContents');
+  divCartContents.appendChild(pPreview);
 }
 
 // Set up the "submit" event listener on the form.
