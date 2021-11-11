@@ -15,8 +15,7 @@ body{
 
 body>header{
     border-top:1rem solid lightcoral;
-    background: url('assets/backgroundTwo.jpg');
-    background: url('../assets/backgroundTwo.jpg');
+    background: url('backgroundTwo.jpg');
     height:300px;
     display: flex;
     justify-content: space-between;
